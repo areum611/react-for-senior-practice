@@ -17,10 +17,16 @@ function App() {
       <button
         type="button"
         className="theme-toggle"
+        aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
         aria-pressed={isDarkMode}
         onClick={() => setIsDarkMode((current) => !current)}
       >
-        {isDarkMode ? 'Light mode' : 'Dark mode'}
+        <span className="theme-toggle__label">
+          {isDarkMode ? 'Dark' : 'Light'}
+        </span>
+        <span className="theme-toggle__track" aria-hidden="true">
+          <span className="theme-toggle__thumb"></span>
+        </span>
       </button>
 
       <section id="center">
