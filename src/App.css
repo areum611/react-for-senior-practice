@@ -70,14 +70,26 @@
 }
 
 .counter {
+  position: relative;
+  z-index: 1;
+  min-width: 126px;
+  width: max-content;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
-  padding: 5px 10px;
+  line-height: 1;
+  padding: 6px 12px;
   border-radius: 5px;
   color: var(--accent);
   background: var(--accent-bg);
   border: 2px solid transparent;
   transition: border-color 0.3s;
-  margin-bottom: 24px;
+  margin-bottom: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
 
   &:hover {
     border-color: var(--accent-border);
@@ -85,6 +97,549 @@
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
+  }
+}
+
+.counter__label {
+  display: inline-block;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.counter::after {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  z-index: -1;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle, rgba(255, 183, 3, 0.34), transparent 58%),
+    radial-gradient(circle, rgba(56, 189, 248, 0.18), transparent 72%);
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.counter:active::after {
+  opacity: 1;
+  transform: scale(1.8);
+}
+
+.surprise {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: max-content;
+  min-height: 0;
+}
+
+.surprise__sparks {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.surprise__spark {
+  position: absolute;
+  width: 12px;
+  height: 24px;
+  border-radius: 3px;
+  background: #ffb703;
+  opacity: 0;
+  box-shadow: 0 0 18px currentColor;
+  animation: spark-pop 1100ms cubic-bezier(0.12, 0.74, 0.18, 1) forwards;
+}
+
+.surprise__spark--0 {
+  --spark-x: -180px;
+  --spark-y: -110px;
+  --spark-rotate: 155deg;
+  background: #ffb703;
+}
+
+.surprise__spark--1 {
+  --spark-x: -152px;
+  --spark-y: -28px;
+  --spark-rotate: 62deg;
+  background: #fb7185;
+}
+
+.surprise__spark--2 {
+  --spark-x: -132px;
+  --spark-y: -178px;
+  --spark-rotate: 228deg;
+  background: #38bdf8;
+}
+
+.surprise__spark--3 {
+  --spark-x: -92px;
+  --spark-y: -88px;
+  --spark-rotate: 315deg;
+  background: #a3e635;
+}
+
+.surprise__spark--4 {
+  --spark-x: -52px;
+  --spark-y: -196px;
+  --spark-rotate: 115deg;
+  background: #f97316;
+}
+
+.surprise__spark--5 {
+  --spark-x: -18px;
+  --spark-y: -124px;
+  --spark-rotate: 248deg;
+  background: #c084fc;
+}
+
+.surprise__spark--6 {
+  --spark-x: 28px;
+  --spark-y: -212px;
+  --spark-rotate: 44deg;
+  background: #22c55e;
+}
+
+.surprise__spark--7 {
+  --spark-x: 68px;
+  --spark-y: -96px;
+  --spark-rotate: 284deg;
+  background: #60a5fa;
+}
+
+.surprise__spark--8 {
+  --spark-x: 118px;
+  --spark-y: -184px;
+  --spark-rotate: 170deg;
+  background: #facc15;
+}
+
+.surprise__spark--9 {
+  --spark-x: 154px;
+  --spark-y: -42px;
+  --spark-rotate: 338deg;
+  background: #f472b6;
+}
+
+.surprise__spark--10 {
+  --spark-x: 188px;
+  --spark-y: -120px;
+  --spark-rotate: 82deg;
+  background: #2dd4bf;
+}
+
+.surprise__spark--11 {
+  --spark-x: -200px;
+  --spark-y: -188px;
+  --spark-rotate: 210deg;
+  background: #e879f9;
+}
+
+.surprise__spark--12 {
+  --spark-x: -212px;
+  --spark-y: 42px;
+  --spark-rotate: 20deg;
+  background: #fb923c;
+}
+
+.surprise__spark--13 {
+  --spark-x: -126px;
+  --spark-y: 98px;
+  --spark-rotate: 265deg;
+  background: #4ade80;
+}
+
+.surprise__spark--14 {
+  --spark-x: -58px;
+  --spark-y: 124px;
+  --spark-rotate: 138deg;
+  background: #818cf8;
+}
+
+.surprise__spark--15 {
+  --spark-x: 8px;
+  --spark-y: 90px;
+  --spark-rotate: 382deg;
+  background: #f43f5e;
+}
+
+.surprise__spark--16 {
+  --spark-x: 82px;
+  --spark-y: 128px;
+  --spark-rotate: 236deg;
+  background: #14b8a6;
+}
+
+.surprise__spark--17 {
+  --spark-x: 152px;
+  --spark-y: 86px;
+  --spark-rotate: 98deg;
+  background: #fde047;
+}
+
+.surprise__spark--18 {
+  --spark-x: 214px;
+  --spark-y: 18px;
+  --spark-rotate: 324deg;
+  background: #93c5fd;
+}
+
+.surprise__spark--19 {
+  --spark-x: 210px;
+  --spark-y: -196px;
+  --spark-rotate: 186deg;
+  background: #f0abfc;
+}
+
+.surprise__spark--20 {
+  --spark-x: -238px;
+  --spark-y: -68px;
+  --spark-rotate: 410deg;
+  background: #34d399;
+}
+
+.surprise__spark--21 {
+  --spark-x: -28px;
+  --spark-y: -252px;
+  --spark-rotate: 272deg;
+  background: #fdba74;
+}
+
+.surprise__spark--22 {
+  --spark-x: 238px;
+  --spark-y: -72px;
+  --spark-rotate: 132deg;
+  background: #a78bfa;
+}
+
+.surprise__spark--23 {
+  --spark-x: 18px;
+  --spark-y: 156px;
+  --spark-rotate: 24deg;
+  background: #67e8f9;
+}
+
+.surprise__sparks--fountain .surprise__spark {
+  width: 9px;
+  height: 28px;
+  border-radius: 999px;
+  animation-name: spark-fountain;
+}
+
+.surprise__sparks--fountain .surprise__spark--0,
+.surprise__sparks--fountain .surprise__spark--6,
+.surprise__sparks--fountain .surprise__spark--12,
+.surprise__sparks--fountain .surprise__spark--18 {
+  --spark-x: -18px;
+  --spark-y: -250px;
+}
+
+.surprise__sparks--fountain .surprise__spark--1,
+.surprise__sparks--fountain .surprise__spark--7,
+.surprise__sparks--fountain .surprise__spark--13,
+.surprise__sparks--fountain .surprise__spark--19 {
+  --spark-x: 28px;
+  --spark-y: -230px;
+}
+
+.surprise__sparks--fountain .surprise__spark--2,
+.surprise__sparks--fountain .surprise__spark--8,
+.surprise__sparks--fountain .surprise__spark--14,
+.surprise__sparks--fountain .surprise__spark--20 {
+  --spark-x: -78px;
+  --spark-y: -190px;
+}
+
+.surprise__sparks--fountain .surprise__spark--3,
+.surprise__sparks--fountain .surprise__spark--9,
+.surprise__sparks--fountain .surprise__spark--15,
+.surprise__sparks--fountain .surprise__spark--21 {
+  --spark-x: 84px;
+  --spark-y: -176px;
+}
+
+.surprise__sparks--fountain .surprise__spark--4,
+.surprise__sparks--fountain .surprise__spark--10,
+.surprise__sparks--fountain .surprise__spark--16,
+.surprise__sparks--fountain .surprise__spark--22 {
+  --spark-x: -132px;
+  --spark-y: -118px;
+}
+
+.surprise__sparks--fountain .surprise__spark--5,
+.surprise__sparks--fountain .surprise__spark--11,
+.surprise__sparks--fountain .surprise__spark--17,
+.surprise__sparks--fountain .surprise__spark--23 {
+  --spark-x: 138px;
+  --spark-y: -108px;
+}
+
+.surprise__sparks--fan .surprise__spark {
+  width: 18px;
+  height: 18px;
+  border-radius: 50% 50% 50% 4px;
+}
+
+.surprise__sparks--fan .surprise__spark:nth-child(odd) {
+  --spark-y: -64px;
+}
+
+.surprise__sparks--fan .surprise__spark:nth-child(even) {
+  --spark-y: 96px;
+}
+
+.surprise__sparks--fan .surprise__spark--0,
+.surprise__sparks--fan .surprise__spark--6,
+.surprise__sparks--fan .surprise__spark--12,
+.surprise__sparks--fan .surprise__spark--18 {
+  --spark-x: -260px;
+  --spark-rotate: 45deg;
+}
+
+.surprise__sparks--fan .surprise__spark--1,
+.surprise__sparks--fan .surprise__spark--7,
+.surprise__sparks--fan .surprise__spark--13,
+.surprise__sparks--fan .surprise__spark--19 {
+  --spark-x: -170px;
+  --spark-rotate: 110deg;
+}
+
+.surprise__sparks--fan .surprise__spark--2,
+.surprise__sparks--fan .surprise__spark--8,
+.surprise__sparks--fan .surprise__spark--14,
+.surprise__sparks--fan .surprise__spark--20 {
+  --spark-x: -76px;
+  --spark-rotate: 170deg;
+}
+
+.surprise__sparks--fan .surprise__spark--3,
+.surprise__sparks--fan .surprise__spark--9,
+.surprise__sparks--fan .surprise__spark--15,
+.surprise__sparks--fan .surprise__spark--21 {
+  --spark-x: 76px;
+  --spark-rotate: 245deg;
+}
+
+.surprise__sparks--fan .surprise__spark--4,
+.surprise__sparks--fan .surprise__spark--10,
+.surprise__sparks--fan .surprise__spark--16,
+.surprise__sparks--fan .surprise__spark--22 {
+  --spark-x: 170px;
+  --spark-rotate: 310deg;
+}
+
+.surprise__sparks--fan .surprise__spark--5,
+.surprise__sparks--fan .surprise__spark--11,
+.surprise__sparks--fan .surprise__spark--17,
+.surprise__sparks--fan .surprise__spark--23 {
+  --spark-x: 260px;
+  --spark-rotate: 380deg;
+}
+
+.surprise__sparks--spiral .surprise__spark {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  animation-name: spark-spiral;
+}
+
+.surprise__sparks--spiral .surprise__spark--0 {
+  --spark-x: 36px;
+  --spark-y: -78px;
+}
+
+.surprise__sparks--spiral .surprise__spark--1 {
+  --spark-x: 82px;
+  --spark-y: -72px;
+}
+
+.surprise__sparks--spiral .surprise__spark--2 {
+  --spark-x: 126px;
+  --spark-y: -28px;
+}
+
+.surprise__sparks--spiral .surprise__spark--3 {
+  --spark-x: 128px;
+  --spark-y: 36px;
+}
+
+.surprise__sparks--spiral .surprise__spark--4 {
+  --spark-x: 76px;
+  --spark-y: 96px;
+}
+
+.surprise__sparks--spiral .surprise__spark--5 {
+  --spark-x: -4px;
+  --spark-y: 124px;
+}
+
+.surprise__sparks--spiral .surprise__spark--6 {
+  --spark-x: -92px;
+  --spark-y: 100px;
+}
+
+.surprise__sparks--spiral .surprise__spark--7 {
+  --spark-x: -154px;
+  --spark-y: 32px;
+}
+
+.surprise__sparks--spiral .surprise__spark--8 {
+  --spark-x: -162px;
+  --spark-y: -62px;
+}
+
+.surprise__sparks--spiral .surprise__spark--9 {
+  --spark-x: -98px;
+  --spark-y: -150px;
+}
+
+.surprise__sparks--spiral .surprise__spark--10 {
+  --spark-x: 18px;
+  --spark-y: -190px;
+}
+
+.surprise__sparks--spiral .surprise__spark--11 {
+  --spark-x: 146px;
+  --spark-y: -152px;
+}
+
+.surprise__sparks--spiral .surprise__spark--12 {
+  --spark-x: 218px;
+  --spark-y: -38px;
+}
+
+.surprise__sparks--spiral .surprise__spark--13 {
+  --spark-x: 204px;
+  --spark-y: 102px;
+}
+
+.surprise__sparks--spiral .surprise__spark--14 {
+  --spark-x: 82px;
+  --spark-y: 196px;
+}
+
+.surprise__sparks--spiral .surprise__spark--15 {
+  --spark-x: -82px;
+  --spark-y: 192px;
+}
+
+.surprise__sparks--spiral .surprise__spark--16 {
+  --spark-x: -218px;
+  --spark-y: 82px;
+}
+
+.surprise__sparks--spiral .surprise__spark--17 {
+  --spark-x: -250px;
+  --spark-y: -96px;
+}
+
+.surprise__sparks--spiral .surprise__spark--18 {
+  --spark-x: -142px;
+  --spark-y: -238px;
+}
+
+.surprise__sparks--spiral .surprise__spark--19 {
+  --spark-x: 54px;
+  --spark-y: -286px;
+}
+
+.surprise__sparks--spiral .surprise__spark--20 {
+  --spark-x: 242px;
+  --spark-y: -190px;
+}
+
+.surprise__sparks--spiral .surprise__spark--21 {
+  --spark-x: 314px;
+  --spark-y: 18px;
+}
+
+.surprise__sparks--spiral .surprise__spark--22 {
+  --spark-x: 204px;
+  --spark-y: 236px;
+}
+
+.surprise__sparks--spiral .surprise__spark--23 {
+  --spark-x: -36px;
+  --spark-y: 314px;
+}
+
+@keyframes spark-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.2);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(36deg) scale(1.25);
+  }
+  58% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--spark-x), var(--spark-y))
+      rotate(var(--spark-rotate)) scale(0.35);
+  }
+}
+
+@keyframes spark-fountain {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 16px) rotate(0deg) scaleY(0.2);
+  }
+  16% {
+    opacity: 1;
+    transform: translate(-50%, -34px) rotate(12deg) scaleY(1.25);
+  }
+  68% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--spark-x), var(--spark-y))
+      rotate(var(--spark-rotate)) scale(0.28);
+  }
+}
+
+@keyframes spark-spiral {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.2);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.35);
+  }
+  62% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--spark-x), var(--spark-y)) rotate(720deg)
+      scale(0.2);
+  }
+}
+
+@media (max-width: 640px) {
+  .surprise__spark {
+    width: 10px;
+    height: 19px;
+  }
+
+  .surprise__sparks {
+    transform: scale(0.68);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surprise__spark {
+    animation-duration: 1ms;
   }
 }
 

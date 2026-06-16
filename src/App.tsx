@@ -7,6 +7,10 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [sparkBurst, setSparkBurst] = useState(0)
+  const fireworkPatterns = ['burst', 'fountain', 'fan', 'spiral']
+  const fireworkPattern =
+    fireworkPatterns[(sparkBurst - 1) % fireworkPatterns.length]
 
   useEffect(() => {
     document.documentElement.dataset.theme = isDarkMode ? 'dark' : 'light'
@@ -41,13 +45,32 @@ function App() {
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+        <div className="surprise">
+          <button
+            type="button"
+            className="counter"
+            onClick={() => {
+              setCount((count) => count + 1)
+              setSparkBurst((current) => current + 1)
+            }}
+          >
+            <span className="counter__label">Count&nbsp;is&nbsp;{count}</span>
+          </button>
+          {sparkBurst > 0 && (
+            <div
+              key={sparkBurst}
+              className={`surprise__sparks surprise__sparks--${fireworkPattern}`}
+              aria-hidden="true"
+            >
+              {Array.from({ length: 24 }, (_, index) => (
+                <span
+                  key={index}
+                  className={`surprise__spark surprise__spark--${index}`}
+                ></span>
+              ))}
+            </div>
+          )}
+        </div>
       </section>
 
       <div className="ticks"></div>
